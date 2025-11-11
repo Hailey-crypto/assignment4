@@ -7,6 +7,7 @@ part 'weather_info_view_model.g.dart';
 
 @riverpod
 class WeatherInfoViewModel extends _$WeatherInfoViewModel {
+  // 객체 생성
   final WeatherRepository weatherRepository = WeatherRepository();
 
   @override
@@ -40,12 +41,10 @@ class WeatherInfoViewModel extends _$WeatherInfoViewModel {
 
       final data = await weatherRepository.fetchWeather(
         lat: position!.latitude,
-        lon: position.longitude,
+        lon: position!.longitude,
       );
-
-      final current = data["current"] as Map<String, dynamic>;
-
-      return WeatherModel.fromJson(current);
+      // 날씨 정보 가져와서 fromJson (Map > Dart 객체)
+      return WeatherModel.fromJson(data["current"] as Map<String, dynamic>);
     }
 
     return await getWeather();

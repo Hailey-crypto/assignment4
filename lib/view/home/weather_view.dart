@@ -9,12 +9,14 @@ class WeatherView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // WeatherInfoViewModel 구독
     final weather = ref.watch(weatherInfoViewModelProvider);
+
+    // UI 렌더링
     return weather.when(
-      // UI 렌더링
       data: (w) => Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         spacing: 10,
         children: [
+          // 시간
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             spacing: 10,
@@ -30,6 +32,7 @@ class WeatherView extends HookConsumerWidget {
               ),
             ],
           ),
+          // 날씨 정보
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             spacing: 10,
@@ -42,6 +45,7 @@ class WeatherView extends HookConsumerWidget {
               Text(style: TextStyle(fontSize: 15), "풍속: ${w.windSpeed}"),
             ],
           ),
+          // 자외선 정보 (나만의 추가 기능 구현)
           Text(style: TextStyle(fontSize: 15), "자외선: ${w.uv}"),
         ],
       ),
