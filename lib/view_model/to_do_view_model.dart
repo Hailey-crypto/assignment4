@@ -10,6 +10,7 @@ class ToDoViewModel extends _$ToDoViewModel {
 
   @override
   List<ToDoModel> build() {
+    // 객체 생성
     repository = ToDoRepository();
     getToDos();
     return [];
