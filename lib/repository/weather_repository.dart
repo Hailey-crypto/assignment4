@@ -1,42 +1,25 @@
-// lib/weather/repository/weather_repository.dart
-import 'package:assignment4/core/weather_service.dart';
-import 'package:assignment4/model/weather_model.dart';
-import 'package:geolocator/geolocator.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class WeatherRepository {
-  final WeatherService _service = WeatherService();
+  // Open-Meteo API 로 날씨 정보 가져오기
+  Future<Map<String, dynamic>> fetchWeather({
+    required double lat,
+    required double lon,
+  }) async {
+    final url = Uri.https('api.open-meteo.com', '/v1/forecast', {
+      'latitude': lat.toString(),
+      'longitude': lon.toString(),
+      'current': 'temperature_2m,weather_code,wind_speed_10m,is_day,uv_index',
+      'timezone': 'Asia/Seoul',
+    });
 
-  // 위치 권한 요청 + 현재 위치 가져오기
-  Future<Position> _getPosition() async {
-    bool enabled = await Geolocator.isLocationServiceEnabled();
-    if (!enabled) throw Exception("위치 서비스 꺼짐");
+    final response = await http.get(url);
 
-    LocationPermission permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+    if (response.statusCode != 200) {
+      throw Exception("API 요청 실패");
     }
 
-    if (permission == LocationPermission.deniedForever) {
-      throw Exception("위치 권한 영구 거부됨");
-    }
-
-    return await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
-  }
-
-  // 위치 기반 날씨 가져오기
-  Future<WeatherModel> getWeather() async {
-    final pos = await _getPosition();
-
-    final data = await _service.fetchWeather(
-      lat: pos.latitude,
-      lon: pos.longitude,
-    );
-
-    final current = data["current"] as Map<String, dynamic>;
-
-    return WeatherModel.fromJson(current);
+    return jsonDecode(response.body);
   }
 }
