@@ -1,3 +1,4 @@
+import 'package:assignment4/view/home/weather_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:assignment4/model/to_do_model.dart';
@@ -42,6 +43,7 @@ class HomePage extends ConsumerWidget {
               ),
             ),
       // 할 일 추가 버튼
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.white,
         backgroundColor: fxc(context).brandColor,
@@ -56,6 +58,12 @@ class HomePage extends ConsumerWidget {
         },
         tooltip: 'Add Todo',
         child: const Icon(Icons.add_rounded, size: 24),
+      ),
+
+      bottomNavigationBar: BottomAppBar(
+        color: vrc(context).background200,
+        height: 120,
+        child: WeatherView(), // 현재 위치와 시간에 따른 날씨 정보 제공 화면
       ),
     );
   }
