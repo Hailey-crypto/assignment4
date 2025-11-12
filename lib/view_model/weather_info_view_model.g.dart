@@ -34,7 +34,7 @@ final class WeatherInfoViewModelProvider
 }
 
 String _$weatherInfoViewModelHash() =>
-    r'2fed9ba26cbad5340ccce171cbe7fc5d25ad9581';
+    r'fd149d08ca01721495244251afbfce2f3d7c392f';
 
 abstract class _$WeatherInfoViewModel extends $AsyncNotifier<WeatherModel> {
   FutureOr<WeatherModel> build();

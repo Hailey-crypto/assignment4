@@ -6,7 +6,7 @@ part 'to_do_model.g.dart';
 @freezed
 abstract class ToDoModel with _$ToDoModel {
   const factory ToDoModel({
-    required String id,
+    String? id,
     required String title,
     required String? description,
     @JsonKey(name: 'is_favorite') required bool isFavorite,

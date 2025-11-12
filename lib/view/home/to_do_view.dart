@@ -27,7 +27,7 @@ class ToDoView extends ConsumerWidget {
           // 완료 버튼
           InkWell(
             onTap: () =>
-                ref.read(toDoViewModelProvider.notifier).toggleDone(todo.id),
+                ref.read(toDoViewModelProvider.notifier).toggleDone(todo.id!),
             child: SizedBox(
               width: 40,
               height: 40,
@@ -46,7 +46,7 @@ class ToDoView extends ConsumerWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ToDoDetailPage(id: todo.id),
+                  builder: (context) => ToDoDetailPage(id: todo.id!),
                 ),
               ),
               child: Text(
@@ -65,7 +65,7 @@ class ToDoView extends ConsumerWidget {
           InkWell(
             onTap: () => ref
                 .read(toDoViewModelProvider.notifier)
-                .toggleFavorite(todo.id),
+                .toggleFavorite(todo.id!),
             child: SizedBox(
               width: 40,
               height: 40,
@@ -100,7 +100,7 @@ class ToDoView extends ConsumerWidget {
                         onPressed: () {
                           ref
                               .read(toDoViewModelProvider.notifier)
-                              .deleteToDo(todo.id);
+                              .deleteToDo(todo.id!);
                           Navigator.pop(context);
                         },
                         child: Text('확인'),
