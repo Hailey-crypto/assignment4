@@ -24,7 +24,7 @@ class ToDoDetailPage extends ConsumerWidget {
           // 즐겨찾기 버튼
           InkWell(
             onTap: () {
-              ref.read(toDoViewModelProvider.notifier).toggleFavorite(todo.id);
+              ref.read(toDoViewModelProvider.notifier).toggleFavorite(todo.id!);
             },
             child: Container(
               margin: const EdgeInsets.only(right: 8),

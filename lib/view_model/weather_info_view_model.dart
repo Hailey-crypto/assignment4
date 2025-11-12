@@ -7,8 +7,7 @@ part 'weather_info_view_model.g.dart';
 
 @riverpod
 class WeatherInfoViewModel extends _$WeatherInfoViewModel {
-  // 객체 생성
-  final WeatherRepository weatherRepository = WeatherRepository();
+  final WeatherRepository weatherRepository = WeatherRepository(); // 객체 생성
 
   @override
   Future<WeatherModel> build() async {

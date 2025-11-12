@@ -6,25 +6,23 @@ part 'to_do_view_model.g.dart';
 
 @riverpod
 class ToDoViewModel extends _$ToDoViewModel {
-  late final ToDoRepository repository;
+  final ToDoRepository repository = ToDoRepository(); // 객체 생성
 
   @override
   List<ToDoModel> build() {
-    // 객체 생성
-    repository = ToDoRepository();
     getToDos();
     return [];
   }
 
-  // R (Firestore 에서 데이터 불러오기)
+  // R (Firestore 에서 데이터 가져오기)
   Future<void> getToDos() async {
     state = await repository.getToDos();
   }
 
   // C
   Future<void> addToDo(ToDoModel newToDo) async {
-    await repository.addToDo(newToDo);
-    state = [...state, newToDo];
+    final createdToDo = await repository.addToDo(newToDo);
+    state = [...state, createdToDo];
   }
 
   // U

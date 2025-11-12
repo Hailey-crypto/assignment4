@@ -39,7 +39,6 @@ class AddToDoDialog extends HookConsumerWidget {
             .read(toDoViewModelProvider.notifier)
             .addToDo(
               ToDoModel(
-                id: '',
                 title: title,
                 description: description,
                 isFavorite: isFavorite.value,

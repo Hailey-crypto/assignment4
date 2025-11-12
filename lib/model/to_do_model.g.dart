@@ -7,7 +7,7 @@ part of 'to_do_model.dart';
 // **************************************************************************
 
 _ToDoModel _$ToDoModelFromJson(Map<String, dynamic> json) => _ToDoModel(
-  id: json['id'] as String,
+  id: json['id'] as String?,
   title: json['title'] as String,
   description: json['description'] as String?,
   isFavorite: json['is_favorite'] as bool,
