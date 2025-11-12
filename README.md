@@ -48,8 +48,8 @@ lib/
  ㄴ core/
      ㄴ app_theme                  : 앱 전체의 테마 지정 (라이트/다크 모드 지원)
      ㄴ firebase_option            : Firebase 구셩파일
-     ㄴ fixed_colors               : 테마 전환 시 변경되는 색 정의 
-     ㄴ variable_colors            : 테마 전환에도 변경되지 않는 색 정의 
+     ㄴ fixed_colors               : 테마 전환에도 변경되지 않는 색 정의 
+     ㄴ variable_colors            : 테마 전환 시 변경되는 색 정의 
  ㄴ model/
      ㄴ to_do_model                : To Do 목록 Model 클래스
      ㄴ weather_model              : 날씨정보 Model 클래스

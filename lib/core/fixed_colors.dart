@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 테마 전환에도 변경되지 않는 색 정의
 @immutable
 class FixedColors extends ThemeExtension<FixedColors> {
   const FixedColors({required this.brandColor});
